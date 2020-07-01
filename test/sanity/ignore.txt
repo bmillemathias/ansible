@@ -145,7 +145,6 @@ lib/ansible/modules/git.py validate-modules:parameter-type-not-in-doc
 lib/ansible/modules/subversion.py validate-modules:doc-required-mismatch
 lib/ansible/modules/subversion.py validate-modules:parameter-type-not-in-doc
 lib/ansible/modules/subversion.py validate-modules:undocumented-parameter
-lib/ansible/modules/getent.py validate-modules:parameter-type-not-in-doc
 lib/ansible/modules/hostname.py validate-modules:invalid-ansiblemodule-schema
 lib/ansible/modules/hostname.py validate-modules:parameter-type-not-in-doc
 lib/ansible/modules/iptables.py pylint:blacklisted-name
