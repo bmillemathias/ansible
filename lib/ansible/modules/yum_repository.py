@@ -34,6 +34,7 @@ options:
         throttling will be disabled. If I(throttle) is expressed as a data rate
         (bytes/sec) then this option is ignored. Default is C(0) (no bandwidth
         throttling).
+    type: str
     default: 0
   baseurl:
     description:
@@ -42,10 +43,12 @@ options:
       - It can also be a list of multiple URLs.
       - This, the I(metalink) or I(mirrorlist) parameters are required if I(state) is set to
         C(present).
+    type: list
   cost:
     description:
       - Relative cost of accessing this repository. Useful for weighing one
         repo's packages as greater/less than any other.
+    type: str
     default: 1000
   deltarpm_metadata_percentage:
     description:
@@ -54,17 +57,20 @@ options:
         can give values over C(100), so C(200) means that the metadata is
         required to be half the size of the packages. Use C(0) to turn off
         this check, and always download metadata.
+    type: str
     default: 100
   deltarpm_percentage:
     description:
       - When the relative size of delta vs pkg is larger than this, delta is
         not used. Use C(0) to turn off delta rpm processing. Local repositories
         (with file:// I(baseurl)) have delta rpms turned off by default.
+    type: str
     default: 75
   description:
     description:
       - A human readable string describing the repository. This option corresponds to the "name" property in the repo file.
       - This parameter is only required if I(state) is set to C(present).
+    type: str
   enabled:
     description:
       - This tells yum whether or not use this repository.
@@ -82,6 +88,7 @@ options:
         space separated list. Shell globs using wildcards (eg. C(*) and C(?))
         are allowed.
       - The list can also be a regular YAML array.
+    type: list
   failovermethod:
     choices: [roundrobin, priority]
     default: roundrobin
@@ -91,13 +98,16 @@ options:
         contacting the host.
       - C(priority) starts from the first I(baseurl) listed and reads through
         them sequentially.
+    type: str
   file:
     description:
       - File name without the C(.repo) extension to save the repo in. Defaults
         to the value of I(name).
+    type: str
   gpgcakey:
     description:
       - A URL pointing to the ASCII-armored CA key file for the repository.
+    type: str
   gpgcheck:
     description:
       - Tells yum whether or not it should perform a GPG signature check on
@@ -109,6 +119,7 @@ options:
     description:
       - A URL pointing to the ASCII-armored GPG key file for the repository.
       - It can also be a list of multiple URLs.
+    type: list
   module_hotfixes:
     description:
       - Disable module RPM filtering and make all RPMs from the repository
@@ -123,6 +134,7 @@ options:
       - C(packages) means that only RPM package downloads should be cached (but
          not repository metadata downloads).
       - C(none) means that no HTTP downloads should be cached.
+    type: str
     choices: [all, packages, none]
     default: all
   include:
@@ -131,6 +143,7 @@ options:
         supported. Configuration file will be inserted at the position of the
         I(include=) line. Included files may contain further include lines.
         Yum will abort with an error if an inclusion loop is detected.
+    type: str
   includepkgs:
     description:
       - List of packages you want to only use from a repository. This should be
@@ -138,11 +151,13 @@ options:
         are allowed. Substitution variables (e.g. C($releasever)) are honored
         here.
       - The list can also be a regular YAML array.
+    type: list
   ip_resolve:
     description:
       - Determines how yum resolves host names.
       - C(4) or C(IPv4) - resolve to IPv4 addresses only.
       - C(6) or C(IPv6) - resolve to IPv6 addresses only.
+    type: str
     choices: [4, 6, IPv4, IPv6, whatever]
     default: whatever
   keepalive:
@@ -156,6 +171,7 @@ options:
     description:
       - Either C(1) or C(0). Determines whether or not yum keeps the cache of
         headers and packages after successful installation.
+    type: str
     choices: ['0', '1']
     default: '1'
   metadata_expire:
@@ -181,6 +197,7 @@ options:
         other commands which will require the latest metadata. Eg.
         I(yum check-update).
       - Note that this option does not override "yum clean expire-cache".
+    type: str
     choices: [never, 'read-only:past', 'read-only:present', 'read-only:future']
     default: 'read-only:present'
   metalink:
@@ -190,31 +207,37 @@ options:
         mirrors for the repomd.xml file to a I(baseurl).
       - This, the I(baseurl) or I(mirrorlist) parameters are required if I(state) is set to
         C(present).
+    type: str
   mirrorlist:
     description:
       - Specifies a URL to a file containing a list of baseurls.
       - This, the I(baseurl) or I(metalink) parameters are required if I(state) is set to
         C(present).
+    type: str
   mirrorlist_expire:
     description:
       - Time (in seconds) after which the mirrorlist locally cached will
         expire.
       - Default value is 6 hours.
+    type: str
     default: 21600
   name:
     description:
       - Unique repository ID. This option builds the section name of the repository in the repo file.
       - This parameter is only required if I(state) is set to C(present) or
         C(absent).
+    type: str
     required: true
   password:
     description:
       - Password to use with the username for basic authentication.
+    type: str
   priority:
     description:
       - Enforce ordered protection of repositories. The value is an integer
         from 1 to 99.
       - This option only works if the YUM Priorities plugin is installed.
+    type: str
     default: 99
   protect:
     description:
@@ -225,12 +248,15 @@ options:
     description:
       - URL to the proxy server that yum should use. Set to C(_none_) to
         disable the global proxy setting.
+    type: str
   proxy_password:
     description:
       - Password for this proxy.
+    type: str
   proxy_username:
     description:
       - Username to use for proxy.
+    type: str
   repo_gpgcheck:
     description:
       - This tells yum whether or not it should perform a GPG signature check
@@ -240,11 +266,13 @@ options:
   reposdir:
     description:
       - Directory where the C(.repo) files will be stored.
+    type: path
     default: /etc/yum.repos.d
   retries:
     description:
       - Set the number of times any attempt to retrieve a file should retry
         before returning an error. Setting this to C(0) makes yum try forever.
+    type: str
     default: 10
   s3_enabled:
     description:
@@ -279,11 +307,13 @@ options:
       - Path to the SSL client certificate yum should use to connect to
         repos/remote sites.
     aliases: [ client_cert ]
+    type: str
   sslclientkey:
     description:
       - Path to the SSL client key yum should use to connect to repos/remote
         sites.
     aliases: [ client_key ]
+    type: str
   sslverify:
     description:
       - Defines whether yum should verify SSL certificates/hosts at all.
@@ -293,6 +323,7 @@ options:
   state:
     description:
       - State of the repo file.
+    type: str
     choices: [absent, present]
     default: present
   throttle:
@@ -300,19 +331,23 @@ options:
       - Enable bandwidth throttling for downloads.
       - This option can be expressed as a absolute data rate in bytes/sec. An
         SI prefix (k, M or G) may be appended to the bandwidth value.
+    type: str
   timeout:
     description:
       - Number of seconds to wait for a connection before timing out.
+    type: str
     default: 30
   ui_repoid_vars:
     description:
       - When a repository id is displayed, append these yum variables to the
         string if they are used in the I(baseurl)/etc. Variables are appended
         in the order listed (and found).
+    type: str
     default: releasever basearch
   username:
     description:
       - Username to use for basic authentication to a repo or really any url.
+    type: str
 
 extends_documentation_fragment:
   - files
