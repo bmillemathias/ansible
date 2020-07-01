@@ -24,17 +24,20 @@ options:
             - git, SSH, or HTTP(S) protocol address of the git repository.
         required: true
         aliases: [ name ]
+        type: str
     dest:
         description:
             - The path of where the repository should be checked out. This
               parameter is required, unless C(clone) is set to C(no).
         required: true
+        type: path
     version:
         description:
             - What version of the repository to check out. This can be
               the literal string C(HEAD), a branch name, a tag name.
               It can also be a I(SHA-1) hash, in which case C(refspec) needs
               to be specified if the given revision is not already available.
+        type: str
         default: "HEAD"
     accept_hostkey:
         description:
@@ -51,18 +54,22 @@ options:
               (although this particular option is better set via
               C(accept_hostkey)).
         version_added: "1.5"
+        type: str
     key_file:
         description:
             - Specify an optional private key file path, on the target host, to use for the checkout.
         version_added: "1.5"
+        type: path
     reference:
         description:
             - Reference repository (see "git clone --reference ...")
         version_added: "1.4"
+        type: str
     remote:
         description:
             - Name of the remote.
         default: "origin"
+        type: str
     refspec:
         description:
             - Add an additional refspec to be fetched.
@@ -72,6 +79,7 @@ options:
               Uses the same syntax as the C(git fetch) command.
               An example value could be "refs/meta/config".
         version_added: "1.9"
+        type: str
     force:
         description:
             - If C(yes), any modified files in the working
@@ -87,6 +95,7 @@ options:
               number or revisions. The minimum possible value is C(1), otherwise
               ignored. Needs I(git>=1.9.1) to work correctly.
         version_added: "1.2"
+        type: int
     clone:
         description:
             - If C(no), do not clone the repository even if it does not exist locally
@@ -106,6 +115,7 @@ options:
             - Path to git executable to use. If not supplied,
               the normal mechanism for resolving binary paths will be used.
         version_added: "1.4"
+        type: path
     bare:
         description:
             - if C(yes), repository will be created as a bare repo, otherwise
@@ -118,7 +128,7 @@ options:
             - The umask to set before doing any checkouts, or any other
               repository maintenance.
         version_added: "2.2"
-
+        type: raw
     recursive:
         description:
             - if C(no), repository will be cloned without the --recursive
@@ -126,14 +136,12 @@ options:
         type: bool
         default: 'yes'
         version_added: "1.6"
-
     single_branch:
         description:
             - Clone only the history leading to the tip of the specified C(branch)
         type: bool
         default: 'no'
         version_added: '2.11'
-
     track_submodules:
         description:
             - if C(yes), submodules will track the latest commit on their
@@ -164,6 +172,7 @@ options:
             - This will clone and perform git archive from local directory as not
               all git servers support git archive.
         version_added: "2.4"
+        type: path
 
     archive_prefix:
         description:
@@ -176,6 +185,7 @@ options:
             - The path to place the cloned repository. If specified, Git repository
               can be separated from working tree.
         version_added: "2.7"
+        type: path
 
     gpg_whitelist:
         description:

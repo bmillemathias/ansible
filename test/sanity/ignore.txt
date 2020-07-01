@@ -138,10 +138,8 @@ lib/ansible/modules/yum_repository.py validate-modules:parameter-type-not-in-doc
 lib/ansible/modules/yum_repository.py validate-modules:undocumented-parameter
 lib/ansible/modules/git.py pylint:blacklisted-name
 lib/ansible/modules/git.py use-argspec-type-path
-lib/ansible/modules/git.py validate-modules:doc-missing-type
 lib/ansible/modules/git.py validate-modules:doc-required-mismatch
 lib/ansible/modules/git.py validate-modules:parameter-list-no-elements
-lib/ansible/modules/git.py validate-modules:parameter-type-not-in-doc
 lib/ansible/modules/subversion.py validate-modules:doc-required-mismatch
 lib/ansible/modules/subversion.py validate-modules:parameter-type-not-in-doc
 lib/ansible/modules/subversion.py validate-modules:undocumented-parameter
