@@ -169,6 +169,7 @@ options:
     description:
     - Path to Unix domain socket to use for connection
     version_added: '2.8'
+    type: path
   http_agent:
     description:
       - Header to identify as, generally appears in web server logs.
