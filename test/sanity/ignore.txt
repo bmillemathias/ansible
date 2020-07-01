@@ -97,7 +97,6 @@ lib/ansible/modules/stat.py validate-modules:parameter-type-not-in-doc
 lib/ansible/modules/stat.py validate-modules:undocumented-parameter
 lib/ansible/modules/unarchive.py validate-modules:nonexistent-parameter-documented
 lib/ansible/modules/unarchive.py validate-modules:parameter-list-no-elements
-lib/ansible/modules/get_url.py validate-modules:parameter-type-not-in-doc
 lib/ansible/modules/uri.py pylint:blacklisted-name
 lib/ansible/modules/uri.py validate-modules:doc-required-mismatch
 lib/ansible/modules/uri.py validate-modules:parameter-list-no-elements

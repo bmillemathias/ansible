@@ -77,6 +77,7 @@ options:
         its integrity and verify that the transfer completed successfully.
         This option is deprecated and will be removed in version 2.14. Use
         option C(checksum) instead.
+    type: str
     default: ''
     version_added: "1.3"
   checksum:
