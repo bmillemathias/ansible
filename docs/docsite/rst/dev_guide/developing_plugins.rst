@@ -8,7 +8,7 @@ Developing plugins
 .. contents::
    :local:
 
-Plugins augment Ansible's core functionality with logic and features that are accessible to all modules. Ansible ships with a number of handy plugins, and you can easily write your own. All plugins must:
+``ansible-base`` supports plugins with logic & features. They are several types of plugins; the most knowns plugins are modules, lookups, callbacks, filters. ``ansible-base`` ships with a small `number of plugins <https://github.com/ansible/ansible/tree/devel/lib/ansible/plugins>`_ ``ansible`` ships with `more <https://docs.ansible.com/ansible/latest/plugins/plugins.html>`_. You can easily write your own. All plugins must:
 
 * be written in Python
 * raise errors
@@ -143,7 +143,7 @@ This code checks the time on the controller, captures the date and time for the 
 the local time, returning the time delta in days, seconds and microseconds.
 
 For practical examples of action plugins,
-see the source code for the `action plugins included with Ansible Core <https://github.com/ansible/ansible/tree/devel/lib/ansible/plugins/action>`_
+see the source code for the `action plugins included with Ansible Base <https://github.com/ansible/ansible/tree/devel/lib/ansible/plugins/action>`_
 
 .. _developing_cache_plugins:
 
@@ -183,7 +183,7 @@ If you use the ``BaseFileCacheModule``, you must implement ``_load`` and ``_dump
 
 If your cache plugin stores JSON, use ``AnsibleJSONEncoder`` in the ``_dump`` or ``set`` method  and ``AnsibleJSONDecoder`` in the ``_load`` or ``get`` method.
 
-For example cache plugins, see the source code for the `cache plugins included with Ansible Core <https://github.com/ansible/ansible/tree/devel/lib/ansible/plugins/cache>`_.
+For example cache plugins, see the source code for the `cache plugins included with Ansible Base <https://github.com/ansible/ansible/tree/devel/lib/ansible/plugins/cache>`_.
 
 .. _developing_callbacks:
 
@@ -276,7 +276,7 @@ but with an extra option so you can see how configuration works in Ansible versi
 
 Note that the ``CALLBACK_VERSION`` and ``CALLBACK_NAME`` definitions are required for properly functioning plugins for Ansible version 2.0 and later. ``CALLBACK_TYPE`` is mostly needed to distinguish 'stdout' plugins from the rest, since you can only load one plugin that writes to stdout.
 
-For example callback plugins, see the source code for the `callback plugins included with Ansible Core <https://github.com/ansible/ansible/tree/devel/lib/ansible/plugins/callback>`_
+For example callback plugins, see the source code for the `callback plugins included with Ansible Base <https://github.com/ansible/ansible/tree/devel/lib/ansible/plugins/callback>`_
 
 .. _developing_connection_plugins:
 
@@ -289,7 +289,7 @@ Ansible version 2.1 introduced the ``smart`` connection plugin. The ``smart`` co
 
 To create a new connection plugin (for example, to support SNMP, Message bus, or other transports), copy the format of one of the existing connection plugins and drop it into ``connection`` directory on your :ref:`local plugin path <local_plugins>`.
 
-For example connection plugins, see the source code for the `connection plugins included with Ansible Core <https://github.com/ansible/ansible/tree/devel/lib/ansible/plugins/connection>`_.
+For example connection plugins, see the source code for the `connection plugins included with Ansible Base <https://github.com/ansible/ansible/tree/devel/lib/ansible/plugins/connection>`_.
 
 .. _developing_filter_plugins:
 
@@ -300,7 +300,7 @@ Filter plugins manipulate data. They are a feature of Jinja2 and are also availa
 
 Filter plugins do not use the standard configuration and documentation system described above.
 
-For example filter plugins, see the source code for the `filter plugins included with Ansible Core <https://github.com/ansible/ansible/tree/devel/lib/ansible/plugins/filter>`_.
+For example filter plugins, see the source code for the `filter plugins included with Ansible Base <https://github.com/ansible/ansible/tree/devel/lib/ansible/plugins/filter>`_.
 
 .. _developing_inventory_plugins:
 
@@ -396,7 +396,7 @@ The following is an example of how this lookup is called::
        - debug:
            msg: the value of foo.txt is {{ contents }} as seen today {{ lookup('pipe', 'date +"%Y-%m-%d"') }}
 
-For example lookup plugins, see the source code for the `lookup plugins included with Ansible Core <https://github.com/ansible/ansible/tree/devel/lib/ansible/plugins/lookup>`_.
+For example lookup plugins, see the source code for the `lookup plugins included with Ansible Base <https://github.com/ansible/ansible/tree/devel/lib/ansible/plugins/lookup>`_.
 
 For more usage examples of lookup plugins, see :ref:`Using Lookups<playbooks_lookups>`.
 
@@ -409,7 +409,7 @@ Test plugins verify data. They are a feature of Jinja2 and are also available in
 
 Test plugins do not use the standard configuration and documentation system described above.
 
-For example test plugins, see the source code for the `test plugins included with Ansible Core <https://github.com/ansible/ansible/tree/devel/lib/ansible/plugins/test>`_.
+For example test plugins, see the source code for the `test plugins included with Ansible Base <https://github.com/ansible/ansible/tree/devel/lib/ansible/plugins/test>`_.
 
 .. _developing_vars_plugins:
 
@@ -475,7 +475,7 @@ Include the ``vars_plugin_staging`` documentation fragment to allow users to det
 
 Also since Ansible 2.10, vars plugins can reside in collections. Vars plugins in collections must require whitelisting to be functional.
 
-For example vars plugins, see the source code for the `vars plugins included with Ansible Core
+For example vars plugins, see the source code for the `vars plugins included with Ansible Base
 <https://github.com/ansible/ansible/tree/devel/lib/ansible/plugins/vars>`_.
 
 .. seealso::
