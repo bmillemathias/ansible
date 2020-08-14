@@ -1,5 +1,4 @@
-name: Backport bot
-
+name: Backport
 on:
   pull_request:
     types:
@@ -8,9 +7,10 @@ on:
 
 jobs:
   backport:
-    runs-on: ubuntu-latest
-    name: Backport closed pull request
+    runs-on: ubuntu-18.04
+    name: Backport
     steps:
-      - uses: bmillemathias/backport-action@v0.0.4
+      - name: Backport
+        uses: tibdex/backport@v1
         with:
-          token: ${{ secrets.BACKPORT_GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
